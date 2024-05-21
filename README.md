@@ -74,6 +74,7 @@ https://localhost:7062/api/Tournaments/
 
 
 DELETE:
+
 Games:
 
 ![Postman_loGmiTnGH7](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/c5cd9e90-4be2-4ebb-8d20-a39f61170740)
