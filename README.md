@@ -73,6 +73,23 @@ https://localhost:7062/api/Tournaments/
 ![devenv_MTs5cMvkO7](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/a1278615-dfc3-4a5c-ad44-5a7722fd9612)
 
 
+DELETE:
+Games:
+
+![Postman_loGmiTnGH7](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/c5cd9e90-4be2-4ebb-8d20-a39f61170740)
+
+![devenv_tHupTp4bRY](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/b3cda959-41e3-453e-ba19-66b79db4fa9c)
+
+Tournaments:
+
+![Postman_TPC1QTKihY](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/03fa1d67-31e7-4628-bad1-b0993b3964d0)
+
+![devenv_MthafJhlLc](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/59c1e8ee-6a3c-4c70-bf58-0f00873fb4f6)
+
+
+
+
+
 
 
 
