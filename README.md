@@ -33,3 +33,16 @@ Postman raw body:
     ]
   }
 }
+
+![opera_AOefumcWRj](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/45409e13-fc17-481a-802d-acafcf4f177a)
+
+![opera_53e6LSiMLL](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/59ee3a29-0376-4c80-8e96-565abd2eaa0d)
+
+![opera_iithB4GJXR](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3e9cf955-6f23-491b-86c7-3896aa32cdb7)
+
+
+
+
+
+
+
