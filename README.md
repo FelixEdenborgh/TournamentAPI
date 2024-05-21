@@ -9,6 +9,8 @@ GET:
 
 POST Games:
 
+https://localhost:7062/api/Games/
+
 ![Postman_oeoCderVuq](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/1e809379-e66d-4edc-aa0f-cd4f7e9e80ef)
 
 ![devenv_vBwi6Dp9Eu](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/69cbc027-aa9a-4c1c-821d-e096f947411c)
@@ -40,6 +42,35 @@ Postman raw body:
 
 ![opera_iithB4GJXR](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3e9cf955-6f23-491b-86c7-3896aa32cdb7)
 
+
+Tournaments POST:
+
+https://localhost:7062/api/Tournaments/
+
+
+{
+  "id": 0,
+  "title": "New Tournament Spongebob jelly hunting",
+  "time": "2024-05-21T09:56:38.253Z",
+  "tournamentId": 0,
+  "tournament": {
+    "id": 0,
+    "title": "New Tournament Spongebob jelly huntinge",
+    "startDate": "2024-05-21T09:56:38.253Z",
+    "games": [
+      {
+        "id": 0,
+        "title": "New Tournament Spongebob jelly hunting",
+        "time": "2024-05-21T09:56:38.253Z",
+        "tournamentId": 0
+      }
+    ]
+  }
+}
+
+![Postman_dnxDq3lkxl](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/2631fbb0-8b5b-4d59-8aa6-b262e4e0c134)
+
+![devenv_MTs5cMvkO7](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/a1278615-dfc3-4a5c-ad44-5a7722fd9612)
 
 
 
