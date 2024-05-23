@@ -91,6 +91,57 @@ Tournaments:
 
 
 
+PUT:
+
+![opera_HsW5pO4D2o](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/6a178d30-24e4-49ee-abb4-6481aff6b720)
+
+
+![opera_QrBWpG53BK](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/75eae7fe-f9fd-46db-9d76-0164a8d2b778)
+
+![opera_QTPBlLLBso](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/2c1118b8-51af-4b48-a851-e7ee6016213a)
+
+
+![Postman_LlFq3Autpl](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/0195a2b4-c36e-4b74-9575-5fe5317dfbbc)
+
+
+![devenv_zNUstHYX7q](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/db74ae70-bafa-43c6-85f6-be8262a090b6)
+
+![devenv_8bjHF4qO00](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/5cc2a764-e3fe-4d3a-a17d-8915d92958ad)
+
+![opera_jlfPzuBT8p](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3dc97b56-8111-4a96-8d64-98d4c6b629bf)
+
+
+![opera_f6aq9EvyzA](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/8c7c39ed-4eb8-4a44-9877-80aa95a5f96f)
+
+
+https://localhost:7062/api/Games/1?Content-Type=application/json
+
+
+{
+  "id": 1,
+  "title": "Land of the living",
+  "time": "2024-05-22T14:20:17.311Z",
+  "tournamentId": 1,
+  "game": {
+    "id": 1,
+    "title": "Chess"
+  },
+  "tournament": {
+    "id": 1,
+    "title": "First to a win",
+    "startDate": "2024-05-22T14:20:17.311Z",
+    "games": [
+      {
+        "id": 1,
+        "title": "Chess Game 1"
+      },
+      {
+        "id": 2,
+        "title": "Chess Game 2"
+      }
+    ]
+  }
+}
 
 
 
