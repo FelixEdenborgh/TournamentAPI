@@ -144,5 +144,67 @@ https://localhost:7062/api/Games/1?Content-Type=application/json
 }
 
 
+------------------------------------------------------------------
+UOW:
+
+Get:
+
+![Postman_EpQxPGw5YK](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/582e2206-a2f3-4d46-8dc4-db4a63c44773)
+
+
+POST:
+
+![Postman_2KocKkchlV](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3a4fe1a3-4db4-44c9-8b9a-397127d205b2)
+
+
+PUT:
+
+![opera_2h6VNJjFqW](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/a5d5dbdf-02ce-4e4f-a4bd-b252dde12f47)
+
+![opera_ujvknBQAsi](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/022237d8-2976-4180-9de1-5dd3c89a9d3b)
+
+![opera_0dUseLMp3j](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/175ec9fd-814d-4c5e-9cc5-9ff6c2177780)
+
+
+![Postman_CH9uAdwRgW](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/c5056c69-c9f3-46c2-a31c-ee51feff3bde)
+
+
+{
+  "id": 1,
+  "title": "Land of the living",
+  "time": "2024-05-22T14:20:17.311Z",
+  "tournamentId": 1,
+  "game": {
+    "id": 1,
+    "title": "Chess"
+  },
+  "tournament": {
+    "id": 1,
+    "title": "First to a win",
+    "startDate": "2024-05-22T14:20:17.311Z",
+    "games": [
+      {
+        "id": 1,
+        "title": "Chess Game 1"
+      },
+      {
+        "id": 2,
+        "title": "Chess Game 2"
+      }
+    ]
+  }
+}
+
+https://localhost:7062/api/Games/1/?Content-Type=application/json
+
+
+
+DELETE:
+
+![opera_iWYnpTs9gF](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/4e912f65-f176-4779-b314-841997324caf)
+
+![Postman_O23H9hcgyr](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3183263f-3228-4715-950c-b3478f1e43aa)
+
+
 
 
