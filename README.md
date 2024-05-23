@@ -206,5 +206,28 @@ DELETE:
 ![Postman_O23H9hcgyr](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3183263f-3228-4715-950c-b3478f1e43aa)
 
 
+GAMES
+GET:
+
+![opera_PiCTUjVwnR](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/853ee04c-43cf-417e-86fa-f4a01e1802e1)
+
+
+POST:
+
+
+PUT:
+
+![opera_Pn1dPlJgju](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/a91d3429-c186-4e69-8b83-2e17bc389a2b)
+
+
+DELETE:
+
+![opera_mbgSpnlJl0](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/2a9f82d2-04ac-45c5-af75-137316b79413)
+
+
+
+
+
+
 
 
