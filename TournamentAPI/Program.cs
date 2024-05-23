@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Tournament.Api.Extensions;
+using TournamentCore.Core.Repositories;
 using TournamentData.Data.Data;
+using TournamentData.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,7 @@ builder.Services.AddDbContext<TournamentApiContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUoW, UoW>();
 
 var app = builder.Build();
 

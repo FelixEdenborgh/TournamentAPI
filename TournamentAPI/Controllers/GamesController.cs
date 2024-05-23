@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TournamentCore.Core.Entities;
-using TournamentData.Data.Data;
+using TournamentCore.Core.Repositories;
 
 namespace TournamentAPI.Controllers
 {
@@ -14,36 +11,35 @@ namespace TournamentAPI.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private readonly TournamentApiContext _context;
+        private readonly IUoW _uow;
 
-        public GamesController(TournamentApiContext context)
+        public GamesController(IUoW uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         // GET: api/Games
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GameEntities>>> GetGames()
         {
-            return await _context.Games.ToListAsync();
+            var games = await _uow.GameRepository.GetAllAsync();
+            return Ok(games);
         }
 
         // GET: api/Games/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GameEntities>> GetGame(int id)
         {
-            var game = await _context.Games.FindAsync(id);
-
+            var game = await _uow.GameRepository.GetAsync(id);
             if (game == null)
             {
                 return NotFound();
             }
 
-            return game;
+            return Ok(game);
         }
 
         // PUT: api/Games/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGame(int id, GameEntities game)
         {
@@ -52,15 +48,24 @@ namespace TournamentAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(game).State = EntityState.Modified;
+            var existingGame = await _uow.GameRepository.GetAsync(id);
+            if (existingGame == null)
+            {
+                return NotFound();
+            }
+
+            // Update fields of the existing game entity
+            existingGame.Title = game.Title;
+            existingGame.Time = game.Time;
+            existingGame.TournamentId = game.TournamentId;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _uow.CompleteAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GameExists(id))
+                if (!await _uow.GameRepository.AnyAsync(id))
                 {
                     return NotFound();
                 }
@@ -74,12 +79,17 @@ namespace TournamentAPI.Controllers
         }
 
         // POST: api/Games
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<GameEntities>> PostGame(GameEntities game)
         {
-            _context.Games.Add(game);
-            await _context.SaveChangesAsync();
+            var existingGame = await _uow.GameRepository.GetAsync(game.Id);
+            if (existingGame != null)
+            {
+                return Conflict("A game with the same ID already exists.");
+            }
+
+            _uow.GameRepository.Add(game);
+            await _uow.CompleteAsync();
 
             return CreatedAtAction("GetGame", new { id = game.Id }, game);
         }
@@ -88,21 +98,21 @@ namespace TournamentAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGame(int id)
         {
-            var game = await _context.Games.FindAsync(id);
+            var game = await _uow.GameRepository.GetAsync(id);
             if (game == null)
             {
                 return NotFound();
             }
 
-            _context.Games.Remove(game);
-            await _context.SaveChangesAsync();
+            _uow.GameRepository.Remove(game);
+            await _uow.CompleteAsync();
 
             return NoContent();
         }
 
-        private bool GameExists(int id)
+        private async Task<bool> GameExists(int id)
         {
-            return _context.Games.Any(e => e.Id == id);
+            return await _uow.GameRepository.AnyAsync(id);
         }
     }
 }
