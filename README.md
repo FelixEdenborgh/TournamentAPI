@@ -214,6 +214,8 @@ GET:
 
 POST:
 
+![opera_kZvkaixEXC](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/93901550-399f-44e3-a937-b1f971f5c55a)
+
 
 PUT:
 
