@@ -269,13 +269,14 @@ Swagger
 
 Postman
 
+![Postman_bTB38rFhJM](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3ebb2de8-aaca-4243-9f54-221b15a82561)
 
 
 
 
 
 
-GET BY TITLE TOURNAMENT:
+GET BY BOOL TOURNAMENT:
 
 Swagger
 
