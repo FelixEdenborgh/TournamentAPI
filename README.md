@@ -261,6 +261,32 @@ DELETE:
 
 
 
+GET BY TITLE GAME:
+
+Swagger
+
+![opera_PlGEffMsau](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/62a5fcb0-547c-463a-bc5d-24f3f1d58659)
+
+Postman
+
+![Postman_bTB38rFhJM](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/3ebb2de8-aaca-4243-9f54-221b15a82561)
+
+
+
+
+
+
+GET BY BOOL TOURNAMENT:
+
+Swagger
+
+![opera_4F4HcYnL2B](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/dd373b07-71c4-486f-84f5-e04a24edd691)
+
+
+Postman
+
+![Postman_nWRu7u5yye](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/266717de-1884-4f95-9894-e79acc5b06f6)
+
 
 
 
