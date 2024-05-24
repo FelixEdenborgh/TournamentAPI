@@ -261,6 +261,25 @@ DELETE:
 
 
 
+GET BY TITLE GAME:
+
+Swagger
+
+![opera_PlGEffMsau](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/62a5fcb0-547c-463a-bc5d-24f3f1d58659)
+
+Postman
+
+
+
+
+
+
+
+GET BY TITLE TOURNAMENT:
+
+Swagger
+
+Postman
 
 
 
