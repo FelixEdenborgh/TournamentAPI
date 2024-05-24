@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TournamentCore.Core.Dto;
 using TournamentCore.Core.Entities;
 using TournamentCore.Core.Repositories;
 
@@ -12,23 +14,24 @@ namespace TournamentAPI.Controllers
     public class GamesController : ControllerBase
     {
         private readonly IUoW _uow;
+        private readonly IMapper _mapper;
 
-        public GamesController(IUoW uow)
+        public GamesController(IUoW uow, IMapper mapper)
         {
             _uow = uow;
+            _mapper = mapper;
         }
 
-        // GET: api/Games
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GameEntities>>> GetGames()
+        public async Task<IActionResult> Get()
         {
             var games = await _uow.GameRepository.GetAllAsync();
-            return Ok(games);
+            var gameDtos = _mapper.Map<IEnumerable<GameDto>>(games);
+            return Ok(gameDtos);
         }
 
-        // GET: api/Games/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<GameEntities>> GetGame(int id)
+        public async Task<IActionResult> GetGame(int id)
         {
             var game = await _uow.GameRepository.GetAsync(id);
             if (game == null)
@@ -36,28 +39,20 @@ namespace TournamentAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(game);
+            var gameDto = _mapper.Map<GameDto>(game);
+            return Ok(gameDto);
         }
 
-        // PUT: api/Games/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGame(int id, GameEntities game)
+        public async Task<IActionResult> PutGame(int id, GameDto gameDto)
         {
-            if (id != game.Id)
+            if (id != gameDto.Id)
             {
                 return BadRequest();
             }
 
-            var existingGame = await _uow.GameRepository.GetAsync(id);
-            if (existingGame == null)
-            {
-                return NotFound();
-            }
-
-            // Update fields of the existing game entity
-            existingGame.Title = game.Title;
-            existingGame.Time = game.Time;
-            existingGame.TournamentId = game.TournamentId;
+            var game = _mapper.Map<GameEntities>(gameDto);
+            _uow.GameRepository.Update(game);
 
             try
             {
@@ -65,7 +60,7 @@ namespace TournamentAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!await _uow.GameRepository.AnyAsync(id))
+                if (!await GameExists(id))
                 {
                     return NotFound();
                 }
@@ -78,23 +73,22 @@ namespace TournamentAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Games
         [HttpPost]
-        public async Task<ActionResult<GameEntities>> PostGame(GameEntities game)
+        public async Task<IActionResult> PostGame([FromBody] GameDto gameDto)
         {
-            var existingGame = await _uow.GameRepository.GetAsync(game.Id);
-            if (existingGame != null)
+            if (!ModelState.IsValid)
             {
-                return Conflict("A game with the same ID already exists.");
+                return BadRequest(ModelState);
             }
 
+            var game = _mapper.Map<GameEntities>(gameDto);
             _uow.GameRepository.Add(game);
             await _uow.CompleteAsync();
 
-            return CreatedAtAction("GetGame", new { id = game.Id }, game);
+            var createdGameDto = _mapper.Map<GameDto>(game);
+            return CreatedAtAction(nameof(GetGame), new { id = createdGameDto.Id }, createdGameDto);
         }
 
-        // DELETE: api/Games/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGame(int id)
         {

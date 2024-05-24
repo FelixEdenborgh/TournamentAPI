@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Tournament.Api.Extensions;
 using TournamentCore.Core.Repositories;
+using TournamentData.Data;
 using TournamentData.Data.Data;
 using TournamentData.Data.Repositories;
 
@@ -19,6 +20,7 @@ builder.Services.AddDbContext<TournamentApiContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUoW, UoW>();
+builder.Services.AddAutoMapper(typeof(TournamentMappings));
 
 var app = builder.Build();
 

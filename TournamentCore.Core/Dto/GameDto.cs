@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TournamentCore.Core.Entities
+namespace TournamentCore.Core.Dto
 {
-    public class GameEntities
+    public class GameDto
     {
         public int Id { get; set; }
-
-        [Required]
-        [MaxLength(100)]
         public string Title { get; set; }
         public DateTime Time { get; set; }
         public int TournamentId { get; set; }
-        public TournamentEntities Tournament { get; set; }
     }
 }

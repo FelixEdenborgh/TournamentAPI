@@ -17,5 +17,13 @@ namespace TournamentData.Data.Data
         public DbSet<TournamentEntities> Tournaments { get; set;}
         public DbSet<GameEntities> Games { get; set;}
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<GameEntities>()
+                .HasOne(g => g.Tournament)
+                .WithMany(t => t.Games)
+                .HasForeignKey(g => g.TournamentId);
+        }
+
     }
 }
