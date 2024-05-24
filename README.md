@@ -247,6 +247,9 @@ PUT:
 
 ![opera_VfBMDJj4Qa](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/242c9352-b1e0-4a4d-a128-3b816f9cf9c9)
 
+![Postman_7xC1itYJnm](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/9edbca4d-7bdf-476e-8824-9e588f1555ce)
+
+
 DELETE:
 
 ![opera_S1IPrRr38L](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/e37cebb4-84d3-4aad-94b5-a9ed05a3ea55)
