@@ -24,4 +24,8 @@
     <ProjectReference Include="..\TournamentData.Data\TournamentData.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uppgift\" />
+  </ItemGroup>
+
 </Project>
