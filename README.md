@@ -280,7 +280,13 @@ GET BY BOOL TOURNAMENT:
 
 Swagger
 
+![opera_4F4HcYnL2B](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/dd373b07-71c4-486f-84f5-e04a24edd691)
+
+
 Postman
+
+![Postman_nWRu7u5yye](https://github.com/FelixEdenborgh/TournamentAPI/assets/31070311/266717de-1884-4f95-9894-e79acc5b06f6)
+
 
 
 
