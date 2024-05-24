@@ -21,6 +21,11 @@ namespace TournamentData.Data.Repositories
 
         public async Task<IEnumerable<GameEntities>> GetAllAsync() => await _context.Games.ToListAsync();
         public async Task<GameEntities> GetAsync(int id) => await _context.Games.FindAsync(id);
+
+        public async Task<IEnumerable<GameEntities>> GetByTitleAsync(string title)
+        {
+            return await _context.Games.Where(g => g.Title == title).ToListAsync();
+        }
         public async Task<bool> AnyAsync(int id) => await _context.Games.AnyAsync(g => g.Id == id);
         public void Add(GameEntities game) => _context.Games.Add(game);
         public void Update(GameEntities game) => _context.Games.Update(game);

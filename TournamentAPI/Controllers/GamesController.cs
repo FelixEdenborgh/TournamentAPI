@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TournamentCore.Core.Dto;
@@ -43,6 +44,19 @@ namespace TournamentAPI.Controllers
             return Ok(gameDto);
         }
 
+        [HttpGet("byTitle/{title}")]
+        public async Task<IActionResult> GetGameByTitle(string title)
+        {
+            var games = await _uow.GameRepository.GetByTitleAsync(title);
+            if (games == null || !games.Any())
+            {
+                return NotFound();
+            }
+
+            var gameDtos = _mapper.Map<IEnumerable<GameDto>>(games);
+            return Ok(gameDtos);
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGame(int id, GameDto gameDto)
         {
@@ -66,7 +80,7 @@ namespace TournamentAPI.Controllers
                 }
                 else
                 {
-                    throw;
+                    return StatusCode(500, "Failed to save changes to the database.");
                 }
             }
 
@@ -81,9 +95,23 @@ namespace TournamentAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            var tournamentExists = await _uow.TournamentRepository.AnyAsync(gameDto.TournamentId);
+            if (!tournamentExists)
+            {
+                return BadRequest("Invalid TournamentId");
+            }
+
             var game = _mapper.Map<GameEntities>(gameDto);
             _uow.GameRepository.Add(game);
-            await _uow.CompleteAsync();
+            try
+            {
+                await _uow.CompleteAsync();
+            }
+            catch
+            {
+                return StatusCode(500, "Failed to save changes to the database.");
+            }
+            
 
             var createdGameDto = _mapper.Map<GameDto>(game);
             return CreatedAtAction(nameof(GetGame), new { id = createdGameDto.Id }, createdGameDto);
@@ -99,9 +127,56 @@ namespace TournamentAPI.Controllers
             }
 
             _uow.GameRepository.Remove(game);
-            await _uow.CompleteAsync();
+            try
+            {
+                await _uow.CompleteAsync();
+            }
+            catch
+            {
+                return StatusCode(500, "Failed to save changes to the database.");
+            }
+            
 
             return NoContent();
+        }
+
+
+        [HttpPatch("{gameId}")]
+        public async Task<ActionResult<GameDto>> PatchGame(int gameId, [FromBody] JsonPatchDocument<GameDto> patchDocument)
+        {
+            if (patchDocument == null)
+            {
+                return BadRequest();
+            }
+
+            var game = await _uow.GameRepository.GetAsync(gameId);
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            var gameDto = _mapper.Map<GameDto>(game);
+
+            patchDocument.ApplyTo(gameDto, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _mapper.Map(gameDto, game);
+            _uow.GameRepository.Update(game);
+
+            try
+            {
+                await _uow.CompleteAsync();
+            }
+            catch
+            {
+                return StatusCode(500, "Failed to save changes to the database.");
+            }
+
+            return Ok(_mapper.Map<GameDto>(game));
         }
 
         private async Task<bool> GameExists(int id)

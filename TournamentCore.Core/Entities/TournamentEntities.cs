@@ -12,7 +12,7 @@ namespace TournamentCore.Core.Entities
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [StringLength(100, ErrorMessage = "Title length can't be more than 100.")]
         public string? Title { get; set; }
         public DateTime StartDate { get; set; }
         public ICollection<GameEntities>? Games { get; set; }
